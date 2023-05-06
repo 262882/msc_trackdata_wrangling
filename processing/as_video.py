@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""Decode base64 encoded images"""
+"""Decode tracking data to video"""
 
-from base64 import decodebytes
 import json
 import sys
 import os
