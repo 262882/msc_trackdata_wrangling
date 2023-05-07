@@ -39,7 +39,7 @@ if __name__ == "__main__":
         with open(name, 'r') as input_file:
             step_dict = json.load(input_file)
         
-        if step_dict['kick_no']==kick_curr:# and (count+1)<len(step_list):
+        if step_dict['kick_no']==kick_curr:
             count_kick = count_kick + 1
         elif kick_curr == -1:
             kick_curr = step_dict['kick_no']
