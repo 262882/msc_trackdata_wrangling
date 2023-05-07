@@ -48,15 +48,16 @@ if __name__ == "__main__":
             video = cv2.VideoWriter(path + output_dir + "/" + prefix + "_tracking_video.avi", cv2.VideoWriter_fourcc(*'MP42'),
                                     float(FPS), (480, 480))
         else:
+            video.release()
             prefix = unique[:6-len(str(kick_curr))] + str(kick_curr)
             with open("./" + output_dir + "/" + prefix + "_tracking_data.json", 'w') as out_file:
                 json.dump(data_dict, out_file, indent=4)
-            video.release()
 
-            kick_curr = step_dict['kick_no']
             count_kick = 0
             frame_no = -1
             data_dict = {}
+            kick_curr = step_dict['kick_no']
+            prefix = unique[:6-len(str(kick_curr))] + str(kick_curr)
             video = cv2.VideoWriter(path + output_dir + "/" + prefix + "_tracking_video.avi", cv2.VideoWriter_fourcc(*'MP42'),
                                     float(FPS), (480, 480))
 
