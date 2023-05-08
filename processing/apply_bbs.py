@@ -35,7 +35,7 @@ if __name__ == "__main__":
         data_list = glob.glob(os.path.join('./', "*.json"))
 
     for count, set in enumerate(data_list):
-        print("Start kick", count+1, "of", len(data_list))
+        print("Process kick", count+1, "of", len(data_list))
         prefix = set[-25:-9]
         cap = cv2.VideoCapture(prefix+'video.avi')
         video = cv2.VideoWriter(output_dir + '/' + prefix + 'bb.avi', cv2.VideoWriter_fourcc(*'MP42'),
@@ -45,11 +45,11 @@ if __name__ == "__main__":
             track_dict = json.load(input_file)
 
         for count, step_dict in enumerate(track_dict.values()):
-            print('Process step', count+1, 'of', len(track_dict.values()), step_dict['time'])
+            #print('Process step', count+1, 'of', len(track_dict.values()))
             if step_dict['frame_no'] is not None:
                 _, frame = cap.read()
-                add_bb_frmcamsph(frame, step_dict['gt_ball_spherical'])
-                video.write(frame[:,:,::-1])
+                add_bb_frmcamsph(frame, step_dict['gt_ball_spherical'], color=(0,0,255))
+                video.write(frame)
 
         cap.release()
         video.release()
